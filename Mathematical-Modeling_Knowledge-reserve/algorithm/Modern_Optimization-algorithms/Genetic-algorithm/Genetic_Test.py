@@ -7,7 +7,6 @@ Crossover_Probability:0.8
 Mutation_Probability:0.05
 
 
-
 def select_Polpulation(dictionary):
     keys = list(dictionary.keys())
 
@@ -32,7 +31,6 @@ def compare_and_replace(strings):
     return result
 
 
-
 def mutate_bit(input_string, mutation_rate=0.05):
     if not (0 <= mutation_rate <= 1):
         raise ValueError("Mutation rate should be between 0 and 1.")
@@ -47,6 +45,7 @@ def mutate_bit(input_string, mutation_rate=0.05):
             mutated_string += bit
 
     return mutated_string
+
 
 def classify_nodes(graph_str):
     class1 = []  # 存储分类为1的节点
@@ -85,6 +84,7 @@ def classify_nodes(graph_str):
 
     return connected_pairs
 
+
 def replace_lowest_value_with_graph(input_string, graph_dict):
     # 初始化最低值和对应的键
     lowest_value = float('inf')
@@ -101,6 +101,7 @@ def replace_lowest_value_with_graph(input_string, graph_dict):
     graph_dict[lowest_key] = input_string
 
     return graph_dict
+
 
 def find_max_classification_result(graph_dict):
     max_result = float('-inf')  # 初始化最大结果为负无穷
@@ -131,6 +132,7 @@ def main():
 
     max_result=find_max_classification_result(graph_dict)
     print(max_result)
+
 
 if __name__ == "__main__":
     main()
