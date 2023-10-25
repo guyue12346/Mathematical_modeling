@@ -1,5 +1,5 @@
 # Mathematical_modeling
-进行数学建模学习和相关项目的记录
+<center>进行数学建模学习和相关项目的记录<center\>
 
 
 
@@ -15,3 +15,9 @@
 - [ ] SPSS操作
 - [ ] 流程图和示意图
 - [ ] Origin使用
+
+
+
+## 项目结构：
+
+![数学建模](https://gitee.com/guyue12346/cloud-image-library/raw/master/数学建模.png)
