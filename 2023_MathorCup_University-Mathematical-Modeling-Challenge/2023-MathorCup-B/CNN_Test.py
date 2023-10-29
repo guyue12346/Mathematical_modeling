@@ -1,36 +1,44 @@
 import numpy as np
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense
+from keras.models import Sequential
+from keras.layers import Conv1D, MaxPooling1D, Flatten, Dense
 
-# 定义数据集
+# 创建一个简单的卷积神经网络
+model = Sequential()
+
+# 添加一个卷积层
+model.add(Conv1D(filters=16, kernel_size=3, input_shape=(3, 5), activation='relu'))
+
+# 添加一个最大池化层
+model.add(MaxPooling1D(pool_size=2))
+
+# 将卷积层的输出展平
+model.add(Flatten())
+
+# 添加一个全连接层
+model.add(Dense(10, activation='relu'))
+
+# 添加输出层
+model.add(Dense(1, activation='linear'))
+
+# 编译模型
+model.compile(optimizer='adam', loss='mean_squared_error')
+
+# 准备时间序列数据
 data = np.array([
     [1, 2, 3, 5, 7],
     [2, 4, 6, 7, 8],
     [5, 7, 8, 9, 10]
 ])
 
-# 准备数据，将数据集拆分成输入和输出序列
-input_sequence = data[:, :-1]  # 输入序列，去掉最后一列
-output_sequence = data[:, 1:]  # 输出序列，去掉第一列
+# 将数据整形成适合输入的形状
+data = data.reshape((3, 5, 1))
 
-# 构建LSTM模型
-model = Sequential()
-model.add(LSTM(50, activation='relu', input_shape=(input_sequence.shape[1], 1)))
-model.add(Dense(1))  # 输出层，可以根据需要调整神经元数量和激活函数
-
-# 编译模型
-model.compile(optimizer='adam', loss='mse')  # 使用均方误差损失函数
-
-# 调整输入数据的形状，LSTM需要3D输入数据，维度为 (samples, time_steps, features)
-input_sequence = input_sequence.reshape(input_sequence.shape[0], input_sequence.shape[1], 1)
+# 准备目标数据（这里只是示例，你需要提供实际目标数据）
+target = np.array([10, 15, 20])
 
 # 训练模型
-model.fit(input_sequence, output_sequence, epochs=100, batch_size=1)  # 可根据需要调整训练时期数和批量大小
+model.fit(data, target, epochs=100, verbose=2)
 
-# 进行预测
-test_input = np.array([[3, 5, 6,8]])  # 用于预测的输入序列
-test_input = test_input.reshape(1, test_input.shape[1], 1)
-predicted_output = model.predict(test_input)
-
-print("预测输出:", predicted_output)
+# 使用模型进行预测
+predictions = model.predict(data)
+print("预测结果：", predictions)
