@@ -25,13 +25,13 @@ distance_matrix[i][j]#是指第i个时间序列和第j个时间序列的DTM距�
 data = list(range(1996))
 
 # 定义K值（簇的数量）
-k = 10
+k = 7
 
 # 随机选择k个数据点作为初始聚类中心
 centroids = random.sample(data, k)
 
 # 最大迭代次数
-max_iterations = 100
+max_iterations = 200
 
 for _ in range(max_iterations):
     # 初始化簇字典，将每个簇初始化为空
@@ -84,3 +84,4 @@ for _ in range(max_iterations):
 for i, centroid in enumerate(centroids):
     print(f'Cluster {i + 1} Center: {centroid}')
     print(f'Cluster {i + 1} Points: {clusters[i]}')
+

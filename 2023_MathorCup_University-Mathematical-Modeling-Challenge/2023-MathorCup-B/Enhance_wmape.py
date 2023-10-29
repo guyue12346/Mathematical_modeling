@@ -10,3 +10,6 @@ def Enhance_wmape(list1,list2):#list1为真实值
     formatted_wmape = "{:.2f}%".format(wmape)
 
     return formatted_wmape
+
+
+
