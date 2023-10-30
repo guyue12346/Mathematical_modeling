@@ -12,4 +12,3 @@ def Enhance_wmape(list1,list2):#list1为真实值
     return formatted_wmape
 
 
-

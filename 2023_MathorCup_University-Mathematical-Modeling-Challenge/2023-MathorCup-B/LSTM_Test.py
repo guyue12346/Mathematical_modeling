@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense
+from tensorflow import Sequential
+from tensorflow import LSTM, Dense
 
 # 定义数据集
 data = np.array([
@@ -10,9 +10,11 @@ data = np.array([
     [5, 7, 8, 9, 10]
 ])
 
+
 # 准备数据，将数据集拆分成输入和输出序列
 input_sequence = data[:, :-1]  # 输入序列，去掉最后一列
 output_sequence = data[:, 1:]  # 输出序列，去掉第一列
+
 
 # 构建LSTM模型
 model = Sequential()

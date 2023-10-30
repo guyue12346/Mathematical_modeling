@@ -85,3 +85,5 @@ for i, centroid in enumerate(centroids):
     print(f'Cluster {i + 1} Center: {centroid}')
     print(f'Cluster {i + 1} Points: {clusters[i]}')
 
+
+
