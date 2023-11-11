@@ -2,7 +2,6 @@ import numpy as np
 import random
 import statsmodels.api as sm
 import pandas as pd
-from sklearn.model_selection import train_test_split
 
 def DTM_k(k):
 

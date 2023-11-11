@@ -89,7 +89,8 @@ def DTM_k(k):
 
     return clusters
 
-def Enhance_wmape(list1,list2):#list1为真实值
+def Enhance_wmape(list1,list2):
+    #list1为真实值
     diff_sum = 0
     for i in range(len(list1)):
         diff_sum += abs(list1[i] - list2[i])
@@ -422,7 +423,8 @@ def get_LSTM_Data(k):
     
     return LSTM_data
 
-def Prepare_time_data(data):#依次返回训练集 测试集 验证集
+def Prepare_time_data(data):
+    #依次返回训练集 测试集 验证集
 
     X_train, X_temp = train_test_split(data, test_size=0.2, random_state=42)
     X_val, X_test = train_test_split(X_temp, test_size=0.5, random_state=42)
@@ -645,4 +647,3 @@ def cluR(lisQ,lis1111):
             return f,g
     
     return cx_fluc(lisQ,lis1111)
-

@@ -9,7 +9,6 @@ from datetime import datetime, timedelta
 from openpyxl import Workbook
 
 
-
 time_series_dict=get_data_dict()
 
 time_series_lists=list(time_series_dict.values())
