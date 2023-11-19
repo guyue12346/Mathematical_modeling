@@ -1,13 +1,11 @@
 
-
-
 import numpy as np
 from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
 
 # 已知的数据点
 known_x = np.array([0, 0.1, 0.2, 0.3])
-known_y = np.array([0.0002,0.00035,0.0004,0.0004])  # 用实际的值替换
+known_y = np.array([-0.00002,0.00017,0.00034,0.00043])  # 用实际的值替换
 
 # 创建插值函数
 interp_function = interp1d(known_x, known_y, kind='cubic', fill_value='extrapolate')
@@ -24,7 +22,7 @@ print(f'在 x = {x_to_interpolate} 处的插值 y 值: {y_interpolated}')
 x_values = np.linspace(0, 0.5, 100)
 plt.plot(known_x, known_y, 'o', label='Known Data Points')
 plt.plot(x_values, interp_function(x_values), '-', label='Interpolation Curves')
-plt.xlabel('x')
-plt.ylabel('y')
+plt.xlabel('R_4')
+plt.ylabel('R=F/R')
 plt.legend()
 plt.show()
