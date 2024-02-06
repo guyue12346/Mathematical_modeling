@@ -1,5 +1,7 @@
 import random
 
+#Monte_Carlo随机模拟检验检验是否为马尔可夫链
+
 #网球规则更新函数
 def clu_games_numbers(player_1_points_numbers, player_2_points_numbers, player_1_games_numbers, player_2_games_numbers,player_1_sets_numbers,player_2_sets_numbers):
     game=1
@@ -72,6 +74,7 @@ def clu_sets_numbers(player_1_games_numbers, player_2_games_numbers, player_1_se
 def Monte_Carlo(abi,pro):
     pass
 
+
 def random_zero_one():
     a=random.choice([0, 1])
     if a==0:
@@ -101,9 +104,11 @@ for i in range(10):
             player_1_games_numbers=0
             player_2_games_numbers=0
         #打印比赛结果
+        print('now is ','The Set:',player_1_sets_numbers+player_2_sets_numbers,'The Game:',player_1_games_numbers+player_2_games_numbers,'The Point:',player_1_points_numbers+player_2_points_numbers)
         print('after this point ,the points games and sets of player_1 is: ',player_1_points_numbers,player_1_games_numbers,player_1_sets_numbers)
         print('after this point ,the points games and sets of player_2 is: ', player_2_points_numbers,player_2_games_numbers,player_2_sets_numbers)
         if player_1_sets_numbers==3 or player_2_sets_numbers==3:
             print('this range is over')
             break
+
 

@@ -146,7 +146,7 @@ def T_fun(initial_parameters):
     all_sum=0
     for p in range(len(all_Parameters)):
         player1_target=all_player1_target[p]
-        player2_target=all_player1_target[p]
+        player2_target=all_player2_target[p]
         Parameters=all_Parameters[p]
 
         # 目标函数F
@@ -160,29 +160,15 @@ def T_fun(initial_parameters):
             F=((1-player[4])*(q/(1-q))+player[4])*player[0]*(1+k1*(player[1])-k2*player[2]*player[4]+k3*(player[5]+player[6]))-k4*((q/(1-q))*player[4]+(1-player[4]))*(1-player[0])*(1+k1*(player[1]-1)+k5*player[2]*player[4]+k3*(player[5]+player[6])+k6*player[3])
             return F
 
-        #目标函数Q
-        def Q_fun(initial_parameters, m, t):
-            a_sum=0
-            if m == 1:
-                return 1
-            else:
-                if t == 1:
-                    for f in range(m-1):
-                        a_sum=a_sum*0.95+F_fun(initial_parameters, f, 1)
-                else:
-                    for f in range(m):
-                        a_sum=a_sum*0.95+F_fun(initial_parameters, f, 2)
-                return a_sum
-        
         sum=0
-        for l in range(1000):
+        for l in range(len(player1_target)):
             if l in Parameters:
                 value_list=Parameters[l]
                 if value_list[1]==1:
                     N=1
                 else:
                     N=0
-                sum+=((Q_fun(initial_parameters, l+1, 1) - Q_fun(initial_parameters, l+1, 2)) / (Q_fun(initial_parameters, l+1, 1) + Q_fun(initial_parameters, l+1, 2)) - N) ** 2
+                sum+=((F_fun(initial_parameters, l, 1) - F_fun(initial_parameters, l, 2)) / (F_fun(initial_parameters, l, 1) + F_fun(initial_parameters, l, 2)) - N) ** 2
             else:
                 break
         all_sum+=sum
@@ -318,8 +304,8 @@ def gradient_descent(initial_params, learning_rate, max_iterations, tolerance):
     return params
 
 # 初始参数、学习率、最大迭代次数和停止条件
-initial_params = [ 23.06961792  ,12.55880331 ,205.84396053 ,361.81089159 ,   20,   20]
-learning_rate = 8
+initial_params = [ 10,  26,  23, 75,   20,   20]
+learning_rate = 100
 max_iterations = 200
 tolerance = 1e-6
 
